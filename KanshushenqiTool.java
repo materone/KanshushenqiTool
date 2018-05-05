@@ -16,8 +16,8 @@ import java.util.Map;
 //import model.chaps;
 
 public class KanshushenqiTool {
-	public static final String DBURL = "jdbc:sqlite:///C:/Users/Tony/Documents/MuMu共享文件夹/JW_BOOK_3.db";
-	public static final String BOOKPATH = "C:/Users/Tony/Documents/MuMu共享文件夹/";
+	public static final String DBURL = "jdbc:sqlite:///C:/Users/Tony/Documents/MuMu共享文件夹/dsj/JW_BOOK_3.db";
+	public static final String BOOKPATH = "C:/Users/Tony/Documents/MuMu共享文件夹/dsj/";
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -33,7 +33,7 @@ public class KanshushenqiTool {
 			Statement s = conn.createStatement();
 //			ResultSet rs = s.executeQuery("select * from chapterbean where hascontent<>0 limit 1890,1394");
 //			ResultSet rs = s.executeQuery("select * from chapterbean where hascontent<>0 limit 3284,1922");
-			ResultSet rs = s.executeQuery("SELECT id,author,collectid,name  FROM collectbook");
+			ResultSet rs = s.executeQuery("SELECT id,author,collectid,name  FROM collectbook where collectid='192081'");
 			HashMap<String, String> books = new HashMap<>();
 			while(rs.next()) {
 				books.put(rs.getString("collectid"),rs.getString("name"));
@@ -92,7 +92,7 @@ public class KanshushenqiTool {
 			s.close();
 			conn.close();		
 		} catch (Exception e) {
-			// TODO: handle exception
+			// TODO: handle exception 历史
 			e.printStackTrace();
 		}
 	}
